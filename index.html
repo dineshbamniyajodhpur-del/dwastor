@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwa Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#appLoader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #cbe5ff 0%, #b1d8ff 50%, #8ebdff 100%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px 30px 20px;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader-logo-box {
+    margin-top: 120px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid #3b82f6;
+    border-radius: 12px;
+    padding: 12px 35px;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-logo-text {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00bfff, #3b82f6, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.golden-loading-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.golden-loading-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700, #fff7ad, #ff9800, #ffd700);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ff9800;
+    animation: fillGolden 1.5s forwards ease-in-out, goldenShine 1s infinite linear;
+}
+
+@keyframes fillGolden {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes goldenShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.loader-bottom-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    width: 100%;
+    max-width: 400px;
+    color: #1e293b;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
+}
+
+.kind-tips-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 11px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.kind-tips-icon {
+    background: #fbbf24;
+    color: #0f172a;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.kind-tips-text strong {
+    color: #0f172a;
+    display: block;
+    font-size: 12px;
+}
+
+.certified-text {
+    font-size: 9px;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.loader-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.badge-pill {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.copyright-text {
+    text-align: center;
+    font-size: 8px;
+    color: #64748b;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+body {
+    background: #02040a;
+    color: #fff;
+    padding-bottom: 90px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.rgb-light-1, .rgb-light-2, .rgb-light-3, .rgb-light-4 {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.95;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.rgb-light-1 {
+    width: 450px;
+    height: 450px;
+    top: -80px;
+    left: -80px;
+    background: radial-gradient(circle, #ff0055 0%, #ff0000 50%, transparent 100%);
+    animation: rgbMove1 6s infinite alternate ease-in-out;
+}
+
+.rgb-light-2 {
+    width: 420px;
+    height: 420px;
+    bottom: -50px;
+    right: -50px;
+    background: radial-gradient(circle, #00ff66 0%, #00f0ff 50%, transparent 100%);
+    animation: rgbMove2 7s infinite alternate ease-in-out;
+}
+
+.rgb-light-3 {
+    width: 400px;
+    height: 400px;
+    top: 35%;
+    left: 20%;
+    background: radial-gradient(circle, #fffc00 0%, #ff7300 50%, transparent 100%);
+    animation: rgbMove3 8s infinite alternate ease-in-out;
+}
+
+.rgb-light-4 {
+    width: 380px;
+    height: 380px;
+    bottom: 30%;
+    left: -60px;
+    background: radial-gradient(circle, #9333ea 0%, #3b82f6 50%, transparent 100%);
+    animation: rgbMove4 5s infinite alternate ease-in-out;
+}
+
+@keyframes rgbMove1 {
+    0% { transform: translate(0, 0) scale(1); filter: blur(80px) hue-rotate(0deg); }
+    100% { transform: translate(180px, 220px) scale(1.3); filter: blur(100px) hue-rotate(90deg); }
+}
+
+@keyframes rgbMove2 {
+    0% { transform: translate(0, 0) scale(1.2); filter: blur(90px) hue-rotate(90deg); }
+    100% { transform: translate(-180px, -200px) scale(0.9); filter: blur(110px) hue-rotate(180deg); }
+}
+
+@keyframes rgbMove3 {
+    0% { transform: scale(0.9) rotate(0deg); opacity: 0.7; }
+    100% { transform: scale(1.5) rotate(180deg); opacity: 0.95; }
+}
+
+@keyframes rgbMove4 {
+    0% { transform: translate(50px, -50px) scale(1); }
+    100% { transform: translate(150px, -150px) scale(1.4); }
+}
+
+.container-glass {
+    position: relative;
+    z-index: 2;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+.install-header {
+    background: rgba(255, 0, 85, 0.35);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.install-header .app-info-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.install-header img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.install-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-home-btn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 12px #ef4444;
+}
+
+.install-text {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.main-header {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #00f0ff;
+    object-fit: cover;
+    box-shadow: 0 0 15px #00f0ff;
+}
+
+.site-title {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffd84d;
+    text-shadow: 0 0 15px rgba(255, 216, 77, 0.9);
+}
+
+.verified-icon {
+    color: #38bdf8;
+    font-size: 14px;
+}
+
+.sub-title {
+    font-size: 11px;
+    color: #e2e8f0;
+}
+
+.telegram-icon-btn {
+    background: rgba(0, 240, 255, 0.5);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.9);
+}
+
+.nav-bar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-item i {
+    color: #00ff66;
+}
+
+.banner-container {
+    padding: 12px;
+}
+
+.banner-video {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffd84d;
+    padding: 0 12px 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-shadow: 0 0 12px rgba(255, 216, 77, 0.9);
+}
+
+.top-3-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 0 12px 15px 12px;
+}
+
+.top-card {
+    border-radius: 14px;
+    padding: 10px 6px;
+    text-align: center;
+    position: relative;
+}
+
+.badge-new {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #ef4444;
+}
+
+.top-card img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.top-card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bonus-text {
+    font-size: 10px;
+    color: #facc15;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.withdraw-text {
+    font-size: 10px;
+    color: #cbd5e1;
+    margin-bottom: 6px;
+}
+
+.btn-yellow {
+    background: linear-gradient(90deg, #ffd700, #ff9800);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 0;
+    border-radius: 6px;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+}
+
+.category-pills {
+    display: flex;
+    gap: 8px;
+    padding: 0 12px 12px 12px;
+}
+
+.pill-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.pill-btn.active {
+    background: #00f0ff;
+    color: #02040a;
+    font-weight: 700;
+    box-shadow: 0 0 18px #00f0ff;
+}
+
+.search-box {
+    padding: 0 12px 12px 12px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.35);
+    font-size: 13px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(12px);
+}
+
+.search-box input::placeholder {
+    color: #cbd5e1;
+}
+
+.sort-pills {
+    display: flex;
+    gap: 6px;
+    padding: 0 12px 15px 12px;
+    overflow-x: auto;
+}
+
+.sort-btn {
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.1);
+    color: #e2e8f0;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.25);
+    white-space: nowrap;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.sort-btn.active {
+    background: #00f0ff;
+    color: #02040a;
+    box-shadow: 0 0 15px #00f0ff;
+    font-weight: 700;
+}
+
+.app-list-container {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.list-card {
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.list-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.list-details {
+    flex: 1;
+}
+
+.list-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stars {
+    color: #ffd700;
+    font-size: 10px;
+    margin: 2px 0;
+}
+
+.bonus-info {
+    font-size: 11px;
+    color: #facc15;
+    font-weight: 700;
+}
+
+.withdraw-info {
+    font-size: 10px;
+    color: #cbd5e1;
+}
+
+.btn-blue {
+    background: linear-gradient(90deg, #00f0ff, #3b82f6);
+    color: #02040a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
+}
+
+.bottom-sticky-bar {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    z-index: 999;
+    border-radius: 16px;
+    padding: 3px;
+    background: linear-gradient(90deg, #ff0000, #ff00db, #0012ff, #00f0ff, #00ff22, #fffc00, #ff0000);
+    background-size: 300%;
+    animation: superGlow 3s linear infinite;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.9), 0 0 40px rgba(255, 0, 150, 0.9);
+}
+
+@keyframes superGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.join-channel-btn {
+    background: rgba(2, 4, 10, 0.9);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 13px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div id="appLoader">
+    <div class="loader-logo-box">
+        <div class="loader-logo-text">DiwaGame</div>
+        <div class="golden-loading-container">
+            <div class="golden-loading-bar"></div>
+        </div>
+    </div>
+    <div class="loader-bottom-card">
+        <div class="kind-tips-box">
+            <div class="kind-tips-icon"><i class="fa-regular fa-lightbulb"></i></div>
+            <div class="kind-tips-text">
+                <strong>Dear Players:</strong>
+                if you cannot access the App, please connect to a VPN and try again. Thanks.
+            </div>
+        </div>
+        <div class="certified-text">
+            <span>Licensed in UK and Malta</span>
+            <span>Certified by GA / BMM (UKGC)</span>
+        </div>
+        <div class="loader-badges">
+            <span class="badge-pill">👥 1CRORE+ TRUSTED USERS</span>
+            <span class="badge-pill">🔞 18+ SUITABLE</span>
+            <span class="badge-pill">🎲 RANDOM GENERATOR</span>
+            <span class="badge-pill">🛡️ 100% SECURE</span>
+            <span class="badge-pill">⚡ INSTANT WITHDRAWAL</span>
+        </div>
+        <div class="copyright-text">
+            Authoritative certification and fair gaming &nbsp;|&nbsp; 2026 © PK SOFTI ALL RIGHTS RESERVED
+        </div>
+    </div>
+</div>
+
+<audio id="gfAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" preload="auto"></audio>
+
+<div class="rgb-light-1"></div>
+<div class="rgb-light-2"></div>
+<div class="rgb-light-3"></div>
+<div class="rgb-light-4"></div>
+
+<div class="container-glass">
+
+    <div class="install-header">
+        <div class="app-info-top">
+            <img src="images/logo.png" id="topLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/00f0ff/02040a?text=DS'">
+            <span>Diwa Store</span>
+        </div>
+        <div class="install-btn-group">
+            <button class="add-home-btn">Add to Home</button>
+            <span class="install-text">Install</span>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="logo-container">
+            <img src="images/logo.png" id="mainLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/00f0ff/02040a?text=DS'">
+            <div>
+                <div class="site-title">
+                    Diwa Store
+                    <i class="fa-solid fa-circle-check verified-icon"></i>
+                </div>
+                <div class="sub-title">India's Trusted Gaming Platform</div>
+            </div>
+        </div>
+        <a href="https://t.me/suriyaerningearn" class="telegram-icon-btn" id="topTelegram" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+    </div>
+
+    <div class="nav-bar">
+        <a href="#" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-circle-info"></i> About</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-phone"></i> Contact</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-gift"></i> Promotion</a>
+    </div>
+
+    <div class="banner-container">
+        <video class="banner-video" autoplay loop muted playsinline id="adVideo">
+            <source src="https://cdn.pixabay.com/video/2021/04/12/70884-536967732_large.mp4" type="video/mp4">
+            Your browser does not support video tag.
+        </video>
+    </div>
+
+    <div class="section-title">
+        🏆 Top 3 Apps Today
+    </div>
+    <div class="top-3-grid" id="top3Container"></div>
+
+    <div class="category-pills">
+        <button class="pill-btn active" onclick="filterCategory('all', event)">All Apps</button>
+        <button class="pill-btn" onclick="filterCategory('new', event)">New Apps</button>
+        <button class="pill-btn" onclick="filterCategory('upcoming', event)">Upcoming</button>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search Yono, Rummy, Bonus...">
+    </div>
+
+    <div class="sort-pills">
+        <button class="sort-btn active" onclick="sortGames('default', event)">Default</button>
+        <button class="sort-btn" onclick="sortGames('high', event)">Bonus High</button>
+        <button class="sort-btn" onclick="sortGames('low', event)">Bonus Low</button>
+        <button class="sort-btn" onclick="sortGames('rating', event)">Rating</button>
+    </div>
+
+    <div class="app-list-container" id="appsContainer"></div>
+
+</div>
+
+<div class="bottom-sticky-bar">
+    <a href="https://t.me/suriyaerningearn" class="join-channel-btn" id="bottomTelegram" target="_blank">
+        🏆 Join Official Diwa Channel
+    </a>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA0pw1tf3WUk9yEYFmaH5k-7AM2_6MJTa8",
+  authDomain: "allyonogamesearn.firebaseapp.com",
+  projectId: "allyonogamesearn",
+  storageBucket: "allyonogamesearn.firebasestorage.app",
+  messagingSenderId: "15752292091",
+  appId: "1:15752292091:web:f1cb02a901057c2f95725e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('appLoader');
+        if(loader) {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+        }
+    }, 1500);
+});
+
+const audio = document.getElementById('gfAudio');
+function startTune() {
+    if (audio) {
+        audio.play().then(() => {
+            window.removeEventListener('click', startTune);
+            window.removeEventListener('touchstart', startTune);
+            window.removeEventListener('scroll', startTune);
+        }).catch(err => console.log(err));
+    }
+}
+window.addEventListener('click', startTune);
+window.addEventListener('touchstart', startTune);
+window.addEventListener('scroll', startTune);
+
+const backupGames = [
+    { name: "GoldRummy", bonus: "Welcome Bonus: 200", withdraw: "Withdrawal: 100", rating: 5, image: "https://via.placeholder.com/80/00f0ff/02040a?text=Gold", link: "#" },
+    { name: "JAIHO 777", bonus: "Welcome Bonus: 89", withdraw: "Withdrawal: 100", rating: 4.8, image: "https://via.placeholder.com/80/ff0055/ffffff?text=JAIHO", link: "#" },
+    { name: "WinRummy", bonus: "Welcome Bonus: 250", withdraw: "Withdrawal: Min ₹100", rating: 5, image: "https://via.placeholder.com/80/00ff66/02040a?text=Win", link: "#" },
+    { name: "MaxRummy", bonus: "Welcome Bonus: 150", withdraw: "Withdrawal: 100", rating: 4.9, image: "https://via.placeholder.com/80/fffc00/02040a?text=Max", link: "#" }
+];
+
+let allGames = [];
+
+async function loadBannerVideo() {
+    try {
+        const docSnap = await getDoc(doc(db, "settings", "banner"));
+        if (docSnap.exists() && docSnap.data().videoUrl) {
+            const videoEl = document.getElementById('adVideo');
+            if (videoEl) {
+                videoEl.src = docSnap.data().videoUrl;
+                videoEl.play();
+            }
+        }
+    } catch(e){}
+}
+
+function getBonusValue(game) {
+    if (game.bonusValue !== undefined) return Number(game.bonusValue);
+    const text = game.bonus || '';
+    const match = text.match(/\d+/);
+    return match ? parseInt(match[0], 10) : 0;
+}
+
+function renderTop3(games) {
+    const top3El = document.getElementById('top3Container');
+    top3El.innerHTML = '';
+    
+    games.slice(0, 3).forEach(game => {
+        const imgSrc = game.image && game.image.startsWith('http') ? game.image : `images/${game.image}`;
+        top3El.innerHTML += `
+            <div class="top-card glass-panel">
+                <span class="badge-new">NEW</span>
+                <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/80/00f0ff/02040a?text=${encodeURIComponent(game.name)}'">
+                <h4>${game.name}</h4>
+                <div class="bonus-text">${game.bonus || 'Bonus ₹100'}</div>
+                <div class="withdraw-text">🏦 Withdrawal: ₹100</div>
+                <a href="${game.link || '#'}" class="btn-yellow" target="_blank">Download</a>
+            </div>
+        `;
+    });
+}
+
+function renderAppList(games) {
+    const appsEl = document.getElementById('appsContainer');
+    appsEl.innerHTML = '';
+    
+    games.forEach(game => {
+        const imgSrc = game.image && game.image.startsWith('http') ? game.image : `images/${game.image}`;
+        appsEl.innerHTML += `
+            <div class="list-card glass-panel" data-name="${game.name.toLowerCase()}">
+                <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/80/00f0ff/02040a?text=${encodeURIComponent(game.name)}'">
+                <div class="list-details">
+                    <div class="list-title">
+                        ${game.name}
+                        <span class="badge-new">NEW</span>
+                    </div>
+                    <div class="stars">⭐ ${game.rating || 5}.0</div>
+                    <div class="bonus-info">${game.bonus || 'Welcome Bonus: 100'}</div>
+                    <div class="withdraw-info">🏦 Withdrawal: Min ₹100</div>
+                </div>
+                <a href="${game.link || '#'}" class="btn-blue" target="_blank">Download</a>
+            </div>
+        `;
+    });
+}
+
+async function loadData() {
+    renderTop3(backupGames);
+    renderAppList(backupGames);
+
+    try {
+        const snapshot = await getDocs(collection(db, "games"));
+        if (!snapshot.empty) {
+            allGames = [];
+            snapshot.forEach(docSnap => allGames.push({ id: docSnap.id, ...docSnap.data() }));
+            allGames.sort((a, b) => (a.order || 999) - (b.order || 999));
+            
+            renderTop3(allGames);
+            renderAppList(allGames);
+        }
+    } catch (err) {
+        console.log("Using backup games...", err);
+    }
+}
+
+async function loadTelegram() {
+    try {
+        const docSnap = await getDoc(doc(db, "settings", "telegram"));
+        if (docSnap.exists() && docSnap.data().link) {
+            const url = docSnap.data().link;
+            document.getElementById('topTelegram').href = url;
+            document.getElementById('bottomTelegram').href = url;
+        }
+    } catch(e){}
+}
+
+window.filterCategory = function(type, event) {
+    document.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    
+    let currentList = allGames.length ? allGames : backupGames;
+    let filtered = [...currentList];
+    
+    if (type === 'new') {
+        filtered = filtered.filter(g => g.badge === 'NEW' || (g.order && g.order < 5));
+    } else if (type === 'upcoming') {
+        filtered = filtered.filter(g => g.upcoming === true);
+    }
+    renderAppList(filtered);
+};
+
+window.sortGames = function(sortType, event) {
+    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    
+    let currentList = allGames.length ? allGames : backupGames;
+    let sorted = [...currentList];
+    
+    if (sortType === 'high') {
+        sorted.sort((a, b) => getBonusValue(b) - getBonusValue(a));
+    } else if (sortType === 'low') {
+        sorted.sort((a, b) => getBonusValue(a) - getBonusValue(b));
+    } else if (sortType === 'rating') {
+        sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    }
+    renderAppList(sorted);
+};
+
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const val = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.list-card');
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        card.style.display = name.includes(val) ? 'flex' : 'none';
+    });
+});
+
+loadData();
+loadTelegram();
+loadBannerVideo();
+</script>
+
+</body>
+</html>

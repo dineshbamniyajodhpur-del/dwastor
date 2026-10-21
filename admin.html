@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwa Store - Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { background: #02040a; color: #fff; padding: 15px; padding-bottom: 90px; min-height: 100vh; position: relative; overflow-x: hidden; }
+
+/* --- RGB Lights Background --- */
+.rgb-light-1, .rgb-light-2, .rgb-light-3, .rgb-light-4 { position: fixed; border-radius: 50%; filter: blur(55px); opacity: 0.95; z-index: 0; pointer-events: none; }
+.rgb-light-1 { width: 500px; height: 500px; top: -80px; left: -80px; background: radial-gradient(circle, #ff007f 0%, transparent 70%); }
+.rgb-light-2 { width: 500px; height: 500px; bottom: -80px; right: -80px; background: radial-gradient(circle, #00f0ff 0%, transparent 70%); }
+.rgb-light-3 { width: 450px; height: 450px; top: 35%; left: 10%; background: radial-gradient(circle, #ffe600 0%, transparent 70%); }
+.rgb-light-4 { width: 450px; height: 450px; bottom: 25%; right: 5%; background: radial-gradient(circle, #a855f7 0%, transparent 70%); }
+
+.admin-container { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; }
+
+.header-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-title { font-size: 16px; font-weight: 700; color: #ffd84d; }
+.back-btn { background: rgba(0, 240, 255, 0.2); color: #00f0ff; border: 1px solid #00f0ff; padding: 6px 14px; border-radius: 8px; text-decoration: none; font-size: 12px; font-weight: 700; }
+
+.form-card, .list-card-box { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 15px; margin-bottom: 20px; }
+.form-title, .box-title { font-size: 14px; font-weight: 700; color: #00f0ff; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+
+.input-group { margin-bottom: 10px; }
+.input-group input { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; font-size: 12px; outline: none; }
+.input-group input::placeholder { color: #cbd5e1; }
+
+.btn-submit { width: 100%; background: linear-gradient(90deg, #ffd700, #ff9800); color: #0f172a; font-weight: 700; font-size: 13px; padding: 10px; border: none; border-radius: 10px; cursor: pointer; box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); margin-top: 5px; }
+
+.game-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); padding: 10px; border-radius: 10px; margin-bottom: 8px; }
+.game-info { flex: 1; }
+.game-name { font-size: 13px; font-weight: 700; color: #fff; }
+.game-sub { font-size: 10px; color: #cbd5e1; }
+
+.action-btns { display: flex; gap: 6px; }
+.btn-edit { background: #3b82f6; color: #fff; border: none; padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; cursor: pointer; }
+.btn-delete { background: #ef4444; color: #fff; border: none; padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="rgb-light-1"></div><div class="rgb-light-2"></div><div class="rgb-light-3"></div><div class="rgb-light-4"></div>
+
+<div class="admin-container">
+    <div class="header-card">
+        <div class="header-title">Diwa Store - Admin Panel</div>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-house"></i> Home</a>
+    </div>
+
+    <!-- Banner Update Section -->
+    <div class="form-card">
+        <div class="box-title"><i class="fa-solid fa-image"></i> Update Banner Image URL</div>
+        <div class="input-group">
+            <input type="text" id="bannerUrlInput" placeholder="Paste Banner Image URL here...">
+        </div>
+        <button class="btn-submit" id="saveBannerBtn">Save Banner</button>
+    </div>
+
+    <!-- Add / Edit Game Section -->
+    <div class="form-card">
+        <div class="box-title" id="formTitleBox"><i class="fa-solid fa-gamepad"></i> Add New Game</div>
+        <input type="hidden" id="editGameId">
+        <div class="input-group"><input type="text" id="gameName" placeholder="Game Name"></div>
+        <div class="input-group"><input type="text" id="gameImage" placeholder="Image URL"></div>
+        <div class="input-group"><input type="text" id="gameLink" placeholder="Download Link"></div>
+        <div class="input-group"><input type="text" id="gameBonus" placeholder="Bonus (e.g. ₹51)"></div>
+        <div class="input-group"><input type="text" id="gameWithdraw" placeholder="Min Withdrawal (e.g. ₹100)"></div>
+        <div class="input-group"><input type="text" id="gameRating" placeholder="Rating (e.g. 5.0)"></div>
+        <div class="input-group"><input type="text" id="gameBadge" placeholder="Badge (HOT / NEW / UPCOMING)"></div>
+        <div class="input-group"><input type="number" id="gameOrder" placeholder="Display Order (1, 2, 3...)"></div>
+        <button class="btn-submit" id="saveGameBtn">Add Game</button>
+    </div>
+
+    <!-- Games List with Edit & Delete Options -->
+    <div class="list-card-box">
+        <div class="box-title"><i class="fa-solid fa-list"></i> All Games (Edit & Delete Options)[span_2](start_span)[span_2](end_span)</div>
+        <div id="adminGamesList"></div>
+    </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA0pw1tf3WUk9yEYFmaH5k-7AM2_6MJTa8",
+  authDomain: "allyonogamesearn.firebaseapp.com",
+  projectId: "allyonogamesearn",
+  storageBucket: "allyonogamesearn.firebasestorage.app",
+  messagingSenderId: "15752292091",
+  appId: "1:15752292091:web:f1cb02a901057c2f95725e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Load Banner URL
+async function loadAdminBanner() {
+    try {
+        const snap = await getDoc(doc(db, "settings", "banner"));
+        if(snap.exists() && snap.data().videoUrl) {
+            document.getElementById("bannerUrlInput").value = snap.data().videoUrl;
+        }
+    } catch(e) { console.error(e); }
+}
+loadAdminBanner();
+
+document.getElementById("saveBannerBtn").onclick = async () => {
+    let url = document.getElementById("bannerUrlInput").value.trim();
+    try {
+        await setDoc(doc(db, "settings", "banner"), { videoUrl: url });
+        alert("Banner updated successfully!");
+    } catch(e) { alert("Error: " + e.message); }
+};
+
+// Fetch and Display Games for Edit/Delete
+async function fetchAdminGames() {
+    const listEl = document.getElementById("adminGamesList");
+    listEl.innerHTML = "Loading...";
+    try {
+        const querySnapshot = await getDocs(collection(db, "games"));
+        listEl.innerHTML = "";
+        querySnapshot.forEach((docSnap) => {
+            let data = docSnap.data();
+            listEl.innerHTML += `
+                <div class="game-item">
+                    <div class="game-info">
+                        <div class="game-name">${data.name}</div>
+                        <div class="game-sub">Bonus: ${data.bonus || '₹51'} | Min: ${data.withdraw || '₹100'}</div>
+                    </div>
+                    <div class="action-btns">
+                        <button class="btn-edit" onclick="window.editGame('${docSnap.id}', '${encodeURIComponent(JSON.stringify(data))}')">Edit</button>
+                        <button class="btn-delete" onclick="window.deleteGame('${docSnap.id}')">Delete</button>
+                    </div>
+                </div>
+            `;
+        });
+    } catch(e) { listEl.innerHTML = "Error loading games."; }
+}
+fetchAdminGames();
+
+// Save or Update Game Logic
+document.getElementById("saveGameBtn").onclick = async () => {
+    let editId = document.getElementById("editGameId").value;
+    let gameData = {
+        name: document.getElementById("gameName").value.trim(),
+        image: document.getElementById("gameImage").value.trim(),
+        link: document.getElementById("gameLink").value.trim(),
+        bonus: document.getElementById("gameBonus").value.trim(),
+        withdraw: document.getElementById("gameWithdraw").value.trim(),
+        rating: document.getElementById("gameRating").value.trim(),
+        badge: document.getElementById("gameBadge").value.trim(),
+        order: Number(document.getElementById("gameOrder").value) || 99
+    };
+
+    if(!gameData.name) { alert("Please enter game name"); return; }
+
+    try {
+        if(editId) {
+            await updateDoc(doc(db, "games", editId), gameData);
+            alert("Game updated successfully!");
+            document.getElementById("editGameId").value = "";
+            document.getElementById("saveGameBtn").innerText = "Add Game";
+            document.getElementById("formTitleBox").innerHTML = `<i class="fa-solid fa-gamepad"></i> Add New Game`;
+        } else {
+            await addDoc(collection(db, "games"), gameData);
+            alert("Game added successfully!");
+        }
+        // Clear inputs
+        document.getElementById("gameName").value = "";
+        document.getElementById("gameImage").value = "";
+        document.getElementById("gameLink").value = "";
+        document.getElementById("gameBonus").value = "";
+        document.getElementById("gameWithdraw").value = "";
+        document.getElementById("gameRating").value = "";
+        document.getElementById("gameBadge").value = "";
+        document.getElementById("gameOrder").value = "";
+        fetchAdminGames();
+    } catch(e) { alert("Error: " + e.message); }
+};
+
+// Global Edit Function
+window.editGame = (id, encodedData) => {
+    let data = JSON.parse(decodeURIComponent(encodedData));
+    document.getElementById("editGameId").value = id;
+    document.getElementById("gameName").value = data.name || "";
+    document.getElementById("gameImage").value = data.image || "";
+    document.getElementById("gameLink").value = data.link || "";
+    document.getElementById("gameBonus").value = data.bonus || "";
+    document.getElementById("gameWithdraw").value = data.withdraw || "";
+    document.getElementById("gameRating").value = data.rating || "";
+    document.getElementById("gameBadge").value = data.badge || "";
+    document.getElementById("gameOrder").value = data.order || "";
+
+    document.getElementById("saveGameBtn").innerText = "Update Game";
+    document.getElementById("formTitleBox").innerHTML = `<i class="fa-solid fa-pen-to-square"></i> Edit Game`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// Global Delete Function
+window.deleteGame = async (id) => {
+    if(confirm("Are you sure you want to delete this game?")) {
+        try {
+            await deleteDoc(doc(db, "games", id));
+            alert("Game deleted successfully!");
+            fetchAdminGames();
+        } catch(e) { alert("Error: " + e.message); }
+    }
+};
+</script>
+</body>
+</html>

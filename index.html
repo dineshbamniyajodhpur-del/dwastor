@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diwa Store</title>
+<title>NEW DIWA GAMES</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
@@ -14,153 +14,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
-
-#appLoader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(180deg, #cbe5ff 0%, #b1d8ff 50%, #8ebdff 100%);
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px 20px 30px 20px;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-}
-
-.loader-logo-box {
-    margin-top: 120px;
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px solid #3b82f6;
-    border-radius: 12px;
-    padding: 12px 35px;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.loader-logo-text {
-    font-size: 32px;
-    font-weight: 800;
-    background: linear-gradient(90deg, #00bfff, #3b82f6, #6366f1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-    font-style: italic;
-    margin-bottom: 8px;
-}
-
-.golden-loading-container {
-    width: 100%;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-.golden-loading-bar {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #ffd700, #fff7ad, #ff9800, #ffd700);
-    background-size: 200% 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ffd700, 0 0 20px #ff9800;
-    animation: fillGolden 1.5s forwards ease-in-out, goldenShine 1s infinite linear;
-}
-
-@keyframes fillGolden {
-    0% { width: 0%; }
-    100% { width: 100%; }
-}
-
-@keyframes goldenShine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-}
-
-.loader-bottom-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 15px;
-    width: 100%;
-    max-width: 400px;
-    color: #1e293b;
-    box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
-}
-
-.kind-tips-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 11px;
-    border-bottom: 1px solid #cbd5e1;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.kind-tips-icon {
-    background: #fbbf24;
-    color: #0f172a;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-}
-
-.kind-tips-text strong {
-    color: #0f172a;
-    display: block;
-    font-size: 12px;
-}
-
-.certified-text {
-    font-size: 9px;
-    color: #64748b;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.loader-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-}
-
-.badge-pill {
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    color: #334155;
-    font-size: 8px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.copyright-text {
-    text-align: center;
-    font-size: 8px;
-    color: #64748b;
-    margin-top: 8px;
-    font-weight: 600;
 }
 
 body {
@@ -172,6 +25,7 @@ body {
     overflow-x: hidden;
 }
 
+/* RGB Animated Glow Lights */
 .rgb-light-1, .rgb-light-2, .rgb-light-3, .rgb-light-4 {
     position: fixed;
     border-radius: 50%;
@@ -237,11 +91,7 @@ body {
     100% { transform: translate(150px, -150px) scale(1.4); }
 }
 
-.container-glass {
-    position: relative;
-    z-index: 2;
-}
-
+/* Glass panel styling for cards */
 .glass-panel {
     background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(16px) saturate(180%) !important;
@@ -249,15 +99,158 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
 }
 
+/* Fast 0.3s Loader */
+#appLoader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #02040a;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+}
+
+.loader-logo-box {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00f0ff;
+    border-radius: 16px;
+    padding: 14px 32px;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-logo-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 12px #00f0ff;
+}
+
+.golden-loading-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.golden-loading-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff0055, #ffd700, #00ff66, #00f0ff);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00f0ff;
+    animation: fillInstant 0.3s forwards linear;
+}
+
+@keyframes fillInstant {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.loader-bottom-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 12px;
+    width: 100%;
+    max-width: 400px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.kind-tips-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.kind-tips-icon {
+    background: #fef08a;
+    color: #854d0e;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.certified-text {
+    font-size: 9px;
+    color: #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.loader-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+}
+
+.badge-pill {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.copyright-text {
+    text-align: center;
+    font-size: 8px;
+    color: #94a3b8;
+    margin-top: 6px;
+}
+
+.container-glass {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glass Header Section */
+.top-header-section {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(2, 4, 10, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .install-header {
     background: rgba(255, 0, 85, 0.35);
     backdrop-filter: blur(12px);
-    color: #fff;
+    color: #ffffff;
     padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .install-header .app-info-top {
@@ -266,6 +259,7 @@ body {
     gap: 8px;
     font-weight: 600;
     font-size: 14px;
+    color: #ffffff;
 }
 
 .install-header img {
@@ -274,38 +268,25 @@ body {
     border-radius: 50%;
 }
 
-.install-btn-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-home-btn {
+.install-btn-top {
     background: #ef4444;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
+    color: #ffffff;
     font-weight: 700;
-    cursor: pointer;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
     box-shadow: 0 0 12px #ef4444;
-}
-
-.install-text {
-    font-size: 13px;
-    font-weight: 600;
 }
 
 .main-header {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(16px);
-    color: #fff;
     padding: 12px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .logo-container {
@@ -343,10 +324,16 @@ body {
     color: #e2e8f0;
 }
 
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .telegram-icon-btn {
     background: rgba(0, 240, 255, 0.5);
     backdrop-filter: blur(10px);
-    color: #fff;
+    color: #ffffff;
     width: 38px;
     height: 38px;
     border-radius: 10px;
@@ -355,8 +342,56 @@ body {
     justify-content: center;
     text-decoration: none;
     font-size: 18px;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 0 18px rgba(0, 240, 255, 0.9);
+}
+
+.menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+    .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 95px;
+    right: 12px;
+    background: rgba(2, 4, 10, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    width: 180px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(0, 240, 255, 0.2);
 }
 
 .nav-bar {
@@ -365,42 +400,93 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 10px 5px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .nav-item {
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     font-size: 12px;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 }
 
 .nav-item i {
     color: #00ff66;
 }
 
-.banner-container {
+.main-content {
     padding: 12px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.banner-video {
+/* 3 BANNER SLIDER STYLING */
+.slider-container {
+    position: relative;
     width: 100%;
-    height: 180px;
-    border-radius: 16px;
-    display: block;
-    object-fit: cover;
-    border: 1px solid rgba(255,255,255,0.3);
+    height: 130px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 33.333%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #00f0ff;
+    width: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #00f0ff;
 }
 
 .section-title {
     font-size: 16px;
     font-weight: 700;
     color: #ffd84d;
-    padding: 0 12px 10px 12px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -411,7 +497,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    padding: 0 12px 15px 12px;
+    margin-bottom: 15px;
 }
 
 .top-card {
@@ -440,13 +526,13 @@ body {
     border-radius: 12px;
     margin-bottom: 6px;
     object-fit: cover;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .top-card h4 {
     font-size: 12px;
     font-weight: 700;
-    color: #fff;
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -480,7 +566,7 @@ body {
 .category-pills {
     display: flex;
     gap: 8px;
-    padding: 0 12px 12px 12px;
+    margin-bottom: 12px;
 }
 
 .pill-btn {
@@ -491,7 +577,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: #ffffff;
     backdrop-filter: blur(10px);
 }
 
@@ -503,18 +589,18 @@ body {
 }
 
 .search-box {
-    padding: 0 12px 12px 12px;
+    margin-bottom: 12px;
 }
 
 .search-box input {
     width: 100%;
     padding: 12px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     font-size: 13px;
     outline: none;
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: #ffffff;
     backdrop-filter: blur(12px);
 }
 
@@ -525,18 +611,18 @@ body {
 .sort-pills {
     display: flex;
     gap: 6px;
-    padding: 0 12px 15px 12px;
+    margin-bottom: 15px;
     overflow-x: auto;
 }
 
 .sort-btn {
     padding: 6px 12px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: #e2e8f0;
     border-radius: 8px;
     font-size: 11px;
     font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     white-space: nowrap;
     cursor: pointer;
     backdrop-filter: blur(8px);
@@ -550,7 +636,6 @@ body {
 }
 
 .app-list-container {
-    padding: 0 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -562,7 +647,6 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    position: relative;
 }
 
 .list-card img {
@@ -570,7 +654,7 @@ body {
     height: 60px;
     border-radius: 12px;
     object-fit: cover;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .list-details {
@@ -580,16 +664,10 @@ body {
 .list-title {
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.stars {
-    color: #ffd700;
-    font-size: 10px;
-    margin: 2px 0;
 }
 
 .bonus-info {
@@ -637,7 +715,7 @@ body {
 .join-channel-btn {
     background: rgba(2, 4, 10, 0.9);
     backdrop-filter: blur(12px);
-    color: #fff;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -648,12 +726,75 @@ body {
     font-weight: 700;
     font-size: 14px;
 }
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-card {
+    background: rgba(2, 4, 10, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 18px;
+    max-width: 400px;
+    width: 100%;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.modal-header h3 {
+    color: #ffd84d;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal-body {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
 </style>
 </head>
 <body>
+
+<!-- RGB Animated Ambient Lights -->
+<div class="rgb-light-1"></div>
+<div class="rgb-light-2"></div>
+<div class="rgb-light-3"></div>
+<div class="rgb-light-4"></div>
+
+<!-- Fast Loader (0.3s) -->
 <div id="appLoader">
     <div class="loader-logo-box">
-        <div class="loader-logo-text"> NewDiwaGame</div>
+        <div class="loader-logo-text">NEW DIWA GAMES</div>
         <div class="golden-loading-container">
             <div class="golden-loading-bar"></div>
         </div>
@@ -661,109 +802,138 @@ body {
     <div class="loader-bottom-card">
         <div class="kind-tips-box">
             <div class="kind-tips-icon"><i class="fa-regular fa-lightbulb"></i></div>
-            <div class="kind-tips-text">
-                <strong>Dear Players:</strong>
-                if you cannot access the App, please connect to a VPN and try again. Thanks.
+            <div>
+                <strong style="color:#ffffff; font-size:11px;">Dear Players:</strong><br>
+                if you cannot access the App, please connect to a VPN.
             </div>
         </div>
         <div class="certified-text">
-            <span>Licensed in UK and Malta</span>
-            <span>Certified by GA / BMM (UKGC)</span>
+            <span>Licensed in UK & Malta</span>
+            <span>GA / BMM Certified</span>
         </div>
         <div class="loader-badges">
-            <span class="badge-pill">👥 1CRORE+ TRUSTED USERS</span>
-            <span class="badge-pill">🔞 18+ SUITABLE</span>
-            <span class="badge-pill">🎲 RANDOM GENERATOR</span>
+            <span class="badge-pill">👥 1CR+ USERS</span>
+            <span class="badge-pill">🔞 18+</span>
             <span class="badge-pill">🛡️ 100% SECURE</span>
             <span class="badge-pill">⚡ INSTANT WITHDRAWAL</span>
         </div>
         <div class="copyright-text">
-            Authoritative certification and fair gaming &nbsp;|&nbsp; 2026 © PK SOFTI ALL RIGHTS RESERVED
+            2026 © NEW DIWA GAMES ALL RIGHTS RESERVED
         </div>
     </div>
 </div>
 
 <audio id="gfAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" preload="auto"></audio>
 
-<div class="rgb-light-1"></div>
-<div class="rgb-light-2"></div>
-<div class="rgb-light-3"></div>
-<div class="rgb-light-4"></div>
-
 <div class="container-glass">
 
-    <div class="install-header">
-        <div class="app-info-top">
-            <img src="images/logo.png" id="topLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/00f0ff/02040a?text=DS'">
-            <span> New Diwa Game</span>
+    <div class="top-header-section">
+        <div class="install-header">
+            <div class="app-info-top">
+                <img src="logo.png" id="topLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/ef4444/ffffff?text=NDG'">
+                <span>NEW DIWA GAMES App</span>
+            </div>
+            <a href="#" class="install-btn-top">Install App</a>
         </div>
-        <div class="install-btn-group">
-            <button class="add-home-btn">Add to Home</button>
-            <span class="install-text">Install</span>
-        </div>
-    </div>
 
-    <div class="main-header">
-        <div class="logo-container">
-            <img src="images/logo.png" id="mainLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/00f0ff/02040a?text=DS'">
-            <div>
-                <div class="site-title">
-                     New Diwa Game
-                    <i class="fa-solid fa-circle-check verified-icon"></i>
+        <div class="main-header">
+            <div class="logo-container">
+                <img src="logo.png" id="mainLogoImg" alt="Logo" onerror="this.src='https://via.placeholder.com/50/00f0ff/02040a?text=NDG'">
+                <div>
+                    <div class="site-title">
+                         NEW DIWA GAMES
+                        <i class="fa-solid fa-circle-check verified-icon"></i>
+                    </div>
+                    <div class="sub-title">India's Trusted Gaming Platform</div>
                 </div>
-                <div class="sub-title">India's Trusted Gaming Platform</div>
+            </div>
+            <div class="header-right-actions">
+                <a href="https://t.me/suriyaerningearn" class="telegram-icon-btn" id="topTelegram" target="_blank">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
         </div>
-        <a href="https://t.me/suriyaerningearn" class="telegram-icon-btn" id="topTelegram" target="_blank">
-            <i class="fa-brands fa-telegram"></i>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#" onclick="openModal('home'); toggleMenu();"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#" onclick="openModal('about'); toggleMenu();"><i class="fa-solid fa-circle-info"></i> About Us</a>
+            <a href="#" onclick="openModal('contact'); toggleMenu();"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="#" onclick="openModal('disclaimer'); toggleMenu();"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+            <a href="#" onclick="openModal('privacy'); toggleMenu();"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+        </div>
+
+        <div class="nav-bar">
+            <span onclick="openModal('home')" class="nav-item"><i class="fa-solid fa-house"></i> Home</span>
+            <span onclick="openModal('about')" class="nav-item"><i class="fa-solid fa-circle-info"></i> About</span>
+            <span onclick="openModal('contact')" class="nav-item"><i class="fa-solid fa-phone"></i> Contact</span>
+            <span onclick="openModal('disclaimer')" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</span>
+            <span onclick="openModal('privacy')" class="nav-item"><i class="fa-solid fa-shield-halved"></i> Privacy</span>
+        </div>
+    </div>
+        <div class="main-content">
+        <!-- 3 BANNER AUTO SLIDER -->
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper">
+                <div class="slide">
+                    <img src="banner1.png" alt="Banner 1" onerror="this.src='https://via.placeholder.com/600x130/00f0ff/02040a?text=BANNER+1+(banner1.png)'">
+                </div>
+                <div class="slide">
+                    <img src="banner2.png" alt="Banner 2" onerror="this.src='https://via.placeholder.com/600x130/ff0055/ffffff?text=BANNER+2+(banner2.png)'">
+                </div>
+                <div class="slide">
+                    <img src="banner3.png" alt="Banner 3" onerror="this.src='https://via.placeholder.com/600x130/ffd700/02040a?text=BANNER+3+(banner3.png)'">
+                </div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <div class="section-title">
+            🏆 Top 3 Apps Today
+        </div>
+        <div class="top-3-grid" id="top3Container"></div>
+
+        <div class="category-pills">
+            <button class="pill-btn active" onclick="filterCategory('all', event)">All Apps</button>
+            <button class="pill-btn" onclick="filterCategory('new', event)">New Apps</button>
+            <button class="pill-btn" onclick="filterCategory('upcoming', event)">Upcoming</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search Yono, Rummy, Bonus...">
+        </div>
+
+        <div class="sort-pills">
+            <button class="sort-btn active" onclick="sortGames('default', event)">Default</button>
+            <button class="sort-btn" onclick="sortGames('high', event)">Bonus High</button>
+            <button class="sort-btn" onclick="sortGames('low', event)">Bonus Low</button>
+        </div>
+
+        <div class="app-list-container" id="appsContainer"></div>
+    </div>
+
+    <div class="bottom-sticky-bar">
+        <a href="https://t.me/suriyaerningearn" class="join-channel-btn" id="bottomTelegram" target="_blank">
+            🏆 Join Official Telegram Channel
         </a>
     </div>
 
-    <div class="nav-bar">
-        <a href="#" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-circle-info"></i> About</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-phone"></i> Contact</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-gift"></i> Promotion</a>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modalTitle">Title</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                Content...
+            </div>
+        </div>
     </div>
 
-    <div class="banner-container">
-        <img src="benner.png" alt="Banner" class="banner-video">
-        
-            <source src="https://cdn.pixabay.com/video/2021/04/12/70884-536967732_large.mp4" type="video/mp4">
-            Your browser does not support video tag.
-        </video>
-    </div>
-
-    <div class="section-title">
-        🏆 Top 3 Apps Today
-    </div>
-    <div class="top-3-grid" id="top3Container"></div>
-
-    <div class="category-pills">
-        <button class="pill-btn active" onclick="filterCategory('all', event)">All Apps</button>
-        <button class="pill-btn" onclick="filterCategory('new', event)">New Apps</button>
-        <button class="pill-btn" onclick="filterCategory('upcoming', event)">Upcoming</button>
-    </div>
-
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search Yono, Rummy, Bonus...">
-    </div>
-
-    <div class="sort-pills">
-        <button class="sort-btn active" onclick="sortGames('default', event)">Default</button>
-        <button class="sort-btn" onclick="sortGames('high', event)">Bonus High</button>
-        <button class="sort-btn" onclick="sortGames('low', event)">Bonus Low</button>
-        <button class="sort-btn" onclick="sortGames('rating', event)">Rating</button>
-    </div>
-
-    <div class="app-list-container" id="appsContainer"></div>
-
-</div>
-
-<div class="bottom-sticky-bar">
-    <a href="https://t.me/suriyaerningearn" class="join-channel-btn" id="bottomTelegram" target="_blank">
-        🏆 Join Official Diwa Channel
-    </a>
 </div>
 
 <script type="module">
@@ -782,14 +952,47 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const loader = document.getElementById('appLoader');
-        if(loader) {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
+// Banner Auto Slider Logic
+let currentSlide = 0;
+const totalSlides = 3;
+const wrapper = document.getElementById('sliderWrapper');
+const dots = document.querySelectorAll('.dot');
+
+function updateSlider() {
+    wrapper.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+    dots.forEach((dot, idx) => {
+        if(idx === currentSlide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
         }
-    }, 1500);
+    });
+}
+
+window.goToSlide = function(index) {
+    currentSlide = index;
+    updateSlider();
+};
+
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+}, 3000);
+
+// Instant Hide Loader (300ms)
+function hideLoaderNow() {
+    const loader = document.getElementById('appLoader');
+    if(loader) {
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(hideLoaderNow, 300);
+});
+window.addEventListener('load', () => {
+    setTimeout(hideLoaderNow, 300);
 });
 
 const audio = document.getElementById('gfAudio');
@@ -807,32 +1010,24 @@ window.addEventListener('touchstart', startTune);
 window.addEventListener('scroll', startTune);
 
 const backupGames = [
-    { name: "GoldRummy", bonus: "Welcome Bonus: 200", withdraw: "Withdrawal: 100", rating: 5, image: "https://via.placeholder.com/80/00f0ff/02040a?text=Gold", link: "#" },
-    { name: "JAIHO 777", bonus: "Welcome Bonus: 89", withdraw: "Withdrawal: 100", rating: 4.8, image: "https://via.placeholder.com/80/ff0055/ffffff?text=JAIHO", link: "#" },
-    { name: "WinRummy", bonus: "Welcome Bonus: 250", withdraw: "Withdrawal: Min ₹100", rating: 5, image: "https://via.placeholder.com/80/00ff66/02040a?text=Win", link: "#" },
-    { name: "MaxRummy", bonus: "Welcome Bonus: 150", withdraw: "Withdrawal: 100", rating: 4.9, image: "https://via.placeholder.com/80/fffc00/02040a?text=Max", link: "#" }
+    { name: "Diwa spin", bonus: "Sign Up Bonus ₹551", withdraw: "Min Withdraw ₹110", image: "goldrummy.webp", link: "#" },
+    { name: "GoldRummy", bonus: "Sign Up Bonus ₹551", withdraw: "Min Withdraw ₹110", image: "yono-slots.png", link: "#" },
+    { name: "JAIHO 777", bonus: "Sign Up Bonus ₹551", withdraw: "Min Withdraw ₹110", image: "jaiho91.png", link: "#" }
 ];
 
 let allGames = [];
 
-async function loadBannerVideo() {
-    try {
-        const docSnap = await getDoc(doc(db, "settings", "banner"));
-        if (docSnap.exists() && docSnap.data().videoUrl) {
-            const videoEl = document.getElementById('adVideo');
-            if (videoEl) {
-                videoEl.src = docSnap.data().videoUrl;
-                videoEl.play();
-            }
-        }
-    } catch(e){}
+function getImageSrc(imgName) {
+    if (!imgName) return 'https://via.placeholder.com/80/00f0ff/02040a?text=Game';
+    if (imgName.startsWith('http://') || imgName.startsWith('https://')) return imgName;
+    return imgName;
 }
 
 function getBonusValue(game) {
     if (game.bonusValue !== undefined) return Number(game.bonusValue);
-    const text = game.bonus || '';
+    const text = String(game.bonus || '');
     const match = text.match(/\d+/);
-    return match ? parseInt(match[0], 10) : 0;
+    return match ? parseInt(match[0], 10) : 551;
 }
 
 function renderTop3(games) {
@@ -840,14 +1035,14 @@ function renderTop3(games) {
     top3El.innerHTML = '';
     
     games.slice(0, 3).forEach(game => {
-        const imgSrc = game.image && game.image.startsWith('http') ? game.image : `images/${game.image}`;
+        const imgSrc = getImageSrc(game.image);
         top3El.innerHTML += `
             <div class="top-card glass-panel">
                 <span class="badge-new">NEW</span>
                 <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/80/00f0ff/02040a?text=${encodeURIComponent(game.name)}'">
                 <h4>${game.name}</h4>
-                <div class="bonus-text">${game.bonus || 'Bonus ₹100'}</div>
-                <div class="withdraw-text">🏦 Withdrawal: ₹100</div>
+                <div class="bonus-text">Sign Up Bonus ₹551</div>
+                <div class="withdraw-text">🏦 Min Withdraw ₹110</div>
                 <a href="${game.link || '#'}" class="btn-yellow" target="_blank">Download</a>
             </div>
         `;
@@ -859,7 +1054,7 @@ function renderAppList(games) {
     appsEl.innerHTML = '';
     
     games.forEach(game => {
-        const imgSrc = game.image && game.image.startsWith('http') ? game.image : `images/${game.image}`;
+        const imgSrc = getImageSrc(game.image);
         appsEl.innerHTML += `
             <div class="list-card glass-panel" data-name="${game.name.toLowerCase()}">
                 <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/80/00f0ff/02040a?text=${encodeURIComponent(game.name)}'">
@@ -868,9 +1063,8 @@ function renderAppList(games) {
                         ${game.name}
                         <span class="badge-new">NEW</span>
                     </div>
-                    <div class="stars">⭐ ${game.rating || 5}.0</div>
-                    <div class="bonus-info">${game.bonus || 'Welcome Bonus: 100'}</div>
-                    <div class="withdraw-info">🏦 Withdrawal: Min ₹100</div>
+                    <div class="bonus-info">Sign Up Bonus ₹551</div>
+                    <div class="withdraw-info">🏦 Min Withdraw ₹110</div>
                 </div>
                 <a href="${game.link || '#'}" class="btn-blue" target="_blank">Download</a>
             </div>
@@ -893,7 +1087,7 @@ async function loadData() {
             renderAppList(allGames);
         }
     } catch (err) {
-        console.log("Using backup games...", err);
+        console.log("Using default games list...", err);
     }
 }
 
@@ -934,8 +1128,6 @@ window.sortGames = function(sortType, event) {
         sorted.sort((a, b) => getBonusValue(b) - getBonusValue(a));
     } else if (sortType === 'low') {
         sorted.sort((a, b) => getBonusValue(a) - getBonusValue(b));
-    } else if (sortType === 'rating') {
-        sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     }
     renderAppList(sorted);
 };
@@ -949,9 +1141,51 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
     });
 });
 
+window.toggleMenu = function() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('show');
+};
+
+window.openModal = function(type) {
+    const overlay = document.getElementById('modalOverlay');
+    const title = document.getElementById('modalTitle');
+    const body = document.getElementById('modalBody');
+
+    if(type === 'home') {
+        title.innerText = "Welcome to NEW DIWA GAMES";
+        body.innerHTML = "<p>Welcome to India's most trusted gaming portal. Discover Rummy & Card games with daily bonus rewards and instant withdrawals!</p>";
+    } else if(type === 'about') {
+        title.innerText = "About Us";
+        body.innerHTML = "<p>NEW DIWA GAMES is a gaming platform offering real-time updates on popular online card games and official app download links.</p>";
+    } else if(type === 'contact') {
+        title.innerText = "Contact Us";
+        body.innerHTML = "<p>Email: support@newdiwagames.com</p><p>Join our official Telegram channel for updates!</p>";
+    } else if(type === 'disclaimer') {
+        title.innerText = "Disclaimer";
+        body.innerHTML = "<p><strong>18+ Users Only:</strong> Online games involve financial risk. Please play responsibly.</p>";
+    } else if(type === 'privacy') {
+        title.innerText = "Privacy Policy";
+        body.innerHTML = "<p>Your privacy is important to us. We do not store or sell your personal data.</p>";
+    }
+
+    overlay.style.display = 'flex';
+};
+
+window.closeModal = function() {
+    document.getElementById('modalOverlay').style.display = 'none';
+};
+
+window.addEventListener('click', function(e) {
+    if (!e.target.closest('.top-header-section')) {
+        const menu = document.getElementById('dropdownMenu');
+        if (menu && menu.classList.contains('show')) {
+            menu.classList.remove('show');
+        }
+    }
+});
+
 loadData();
 loadTelegram();
-loadBannerVideo();
 </script>
 
 </body>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diwagame.github.io/newdiwagame/sitemap.xml
